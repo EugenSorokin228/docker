@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+
+#  weather:
+#    build: weather_app
+#    restart: always
+#    volumes:
+#      - .\weather_app\statistic:/my_code/statistic
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: odesa.sorokin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "40000:80"
+#    volumes:
+#      - .\data\pgadmin-data:/var/lib/pgadmin
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: test_db
+    ports:
+      - "56555:5432"
+
